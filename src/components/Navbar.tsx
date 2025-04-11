@@ -23,8 +23,8 @@ export default function Navbar() {
     if (userRole === "admin") {
       return (
         <>
-          <Link to="/admin/hotel">Hotel</Link>
-          <Link to="/admin/booking">Booking</Link>
+          <Link to="/admin-dashboard">Hotel</Link>
+          <Link to="/admin-booking">Booking</Link>
         </>
       )
     }
@@ -32,8 +32,8 @@ export default function Navbar() {
       return (
         <>
           <Link to="/">Home</Link>
-          <Link to="/hotels">Hotels</Link>
-          <Link to="/booking">Booking</Link>
+          <Link to="/search-hotels">Hotels</Link>
+          <Link to="/booking-details">Booking</Link>
         </>
       )
     }
