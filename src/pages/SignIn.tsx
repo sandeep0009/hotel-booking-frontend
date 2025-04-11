@@ -30,12 +30,20 @@ export const SignInForm = () => {
 
   const onSubmit = async(data: SignInFormData) => {
     const res=await axiosInstance.post('/signin',data);
-        console.log(res.status)
+        console.log(res)
         if(res.status===200){
-            const user=res.data.user;
+            const user=res.data.data;
+            
             localStorage.setItem('user',JSON.stringify(user));
+            localStorage.setItem('token',res.data.data.token);
             dispatch(setUser(user));
-            navigate('/');
+            if(user.role==="admin"){
+                navigate('/admin-dashobard')
+            }
+            else{
+
+                navigate('/');
+            }
         }
   };
 

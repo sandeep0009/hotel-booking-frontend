@@ -31,10 +31,14 @@ export const SignUpForm = () => {
 
   const onSubmit = async(data: SignUpFormData) => {
     const res=await axiosInstance.post('/signup',data);
-    if(res.status===200){
-        const user=res.data.user;
+    if(res.status===201){
+        const user=res.data.data.user;
         localStorage.setItem('user',JSON.stringify(user));
+        localStorage.setItem('token',res.data.data.token);
         dispatch(setUser(user));
+        if(user.role==="admin"){
+            navigate('/admin-dashobard')
+        }
         navigate('/');
     }
 
